@@ -167,10 +167,9 @@ namespace Assets.Checker
                         {
                             logsList.Clear();
                             var path = folderPath.Substring(folderPath.IndexOf("Assets"));
-                            var guids = AssetDatabase.FindAssets("*", new string[] { path });
                             var files = Directory.GetFiles(path, "*", SearchOption.AllDirectories).Select(t=>t).Where(t=> {
                                 return !t.EndsWith(".meta");
-                            });
+                            }).ToArray();
                             int index = 0;
                             foreach(var file in files)
                             {
@@ -183,7 +182,7 @@ namespace Assets.Checker
                                         checker.BeginCheck(filePath, this.OnLogCallBack);
                                     }
                                 }
-                                EditorUtility.DisplayProgressBar("资源检查", filePath, index * 1f / guids.Length);
+                                EditorUtility.DisplayProgressBar("资源检查", filePath, index * 1f / files.Length);
                             }
                         }
                         catch (Exception e) {

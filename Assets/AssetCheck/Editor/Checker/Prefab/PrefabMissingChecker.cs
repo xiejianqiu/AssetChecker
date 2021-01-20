@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Reflection;
 using UnityEditor;
 using UnityEditor.Experimental.SceneManagement;
@@ -25,6 +26,9 @@ namespace Assets.Checker
                         return false;
                     }
                 }
+            }
+            catch (Exception e) {
+                this.AddLog(e.ToString());
             }
             finally
             {

@@ -23,13 +23,7 @@ namespace Assets.Checker
             logStrBuilder = new StringBuilder();
         }
         protected void AddLog(string _log) {
-            if (logStrBuilder.Length > 0)
-            {
-                logStrBuilder.Append($" | {_log}");
-            }
-            else {
-                logStrBuilder.Append(_log);
-            }
+            logStrBuilder.AppendLine(_log);
         }
      
         public bool GetResult() {
